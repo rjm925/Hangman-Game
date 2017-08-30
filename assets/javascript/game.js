@@ -7,6 +7,24 @@ var revealed = [];
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var teams = ["hawks", "celtics", "nets", "hornets", "bulls", "cavaliers", "mavericks", "nuggets", "pistons", "warriors", "rockets", "pacers", "clippers", "lakers", "grizzlies", "heat", "bucks", "timberwolves", "pelicans", "knicks", "thunder", "magic", "sixers", "suns", "trailblazers", "kings", "spurs", "raptors", "jazz", "wizards"];
 
+var winSound = new sound("assets/media/winner.mp3");
+var loseSound = new sound("assets/media/loser.mp3");
+
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+    }    
+}
+
 var answer = teams[Math.floor(Math.random() * teams.length)];
 console.log(answer);
 
@@ -57,6 +75,7 @@ document.onkeyup = function(event) {
       if (blank === false) {
         wins++;
         W.innerHTML = wins;
+        winSound.play();
         remaining = 10;
         remain.innerHTML = "Guesses Left " + remaining;
         answer = teams[Math.floor(Math.random() * teams.length)];
@@ -78,6 +97,7 @@ document.onkeyup = function(event) {
     if (remaining === 0) {
       losses++;
       L.innerHTML = losses;
+      loseSound.play();
       remaining = 10;
       remain.innerHTML = "Guesses Left " + remaining;
       answer = teams[Math.floor(Math.random() * teams.length)];

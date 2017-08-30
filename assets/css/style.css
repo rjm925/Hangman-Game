@@ -1,0 +1,45 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background-image: url(../images/logo.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  /*font-weight: bold;*/
+}
+
+.main {
+  background-color: black;
+  border: 2px solid  white;
+  padding-bottom: 20px;
+}
+
+h1, h2, h3, p {
+  color: white;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 3px;
+}
+
+h3 {
+  position: relative;
+  top: 10px;
+}
+
+p {
+  background-color: black;
+  font-size: 50px;
+  border: 2px solid white;
+}
+
+#W, #L {
+  font-weight: bolder;
+  color: red;
+}
+
+#guess {
+  padding: 5px 10px 5px 10px;
+}

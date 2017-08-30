@@ -1,8 +1,9 @@
 var wins = 0;
 var losses = 0;
-var remaining = 10;
-var guessed = [];
-var revealed = [];
+var remaining;
+var guessed;
+var revealed;
+var answer;
 
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var teams = ["hawks", "celtics", "nets", "hornets", "bulls", "cavaliers", "mavericks", "nuggets", "pistons", "warriors", "rockets", "pacers", "clippers", "lakers", "grizzlies", "heat", "bucks", "timberwolves", "pelicans", "knicks", "thunder", "magic", "sixers", "suns", "trailblazers", "kings", "spurs", "raptors", "jazz", "wizards"];
@@ -25,13 +26,19 @@ function sound(src) {
     }    
 }
 
-var answer = teams[Math.floor(Math.random() * teams.length)];
-console.log(answer);
-
-for (var i = 0; i < answer.length; i++) {
-  revealed.push("_");
+function newGame() {
+  remaining = 10;
+  remain.innerHTML = "Guesses Left " + remaining;
+  answer = teams[Math.floor(Math.random() * teams.length)];
+  console.log(answer);
+  guessed = [];
+  revealed = [];
+  for (var i = 0; i < answer.length; i++) {
+    revealed.push("_");
+  }
 }
 
+newGame();
 document.onkeyup = function(event) {
   var guess = event.key;
   guess = guess.toLowerCase();
@@ -76,15 +83,7 @@ document.onkeyup = function(event) {
         wins++;
         W.innerHTML = wins;
         winSound.play();
-        remaining = 10;
-        remain.innerHTML = "Guesses Left " + remaining;
-        answer = teams[Math.floor(Math.random() * teams.length)];
-        console.log(answer);
-        guessed = [];
-        revealed = [];
-        for (var i = 0; i < answer.length; i++) {
-          revealed.push("_");
-        }
+        newGame();
       }
     }
 
@@ -98,15 +97,7 @@ document.onkeyup = function(event) {
       losses++;
       L.innerHTML = losses;
       loseSound.play();
-      remaining = 10;
-      remain.innerHTML = "Guesses Left " + remaining;
-      answer = teams[Math.floor(Math.random() * teams.length)];
-      console.log(answer);
-      guessed = [];
-      revealed = [];
-      for (var i = 0; i < answer.length; i++) {
-        revealed.push("_");
-      }
+      newGame();
     }
 
     reveal.innerHTML = revealed.join("  ");

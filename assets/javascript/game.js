@@ -4,6 +4,8 @@ var remaining;
 var guessed;
 var revealed;
 var answer;
+var ansWin;
+var ansLost;
 
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var teams = ["hawks", "celtics", "nets", "hornets", "bulls", "cavaliers", "mavericks", "nuggets", "pistons", "warriors", "rockets", "pacers", "clippers", "lakers", "grizzlies", "heat", "bucks", "timberwolves", "pelicans", "knicks", "thunder", "magic", "sixers", "suns", "trailblazers", "kings", "spurs", "raptors", "jazz", "wizards"];
@@ -83,7 +85,11 @@ document.onkeyup = function(event) {
         wins++;
         W.innerHTML = wins;
         winSound.play();
+        ansWin = answer.toUpperCase();
+        ansLost;
         newGame();
+        lastWin.innerHTML = "Last Answer<br><br>" + ansWin;
+        lastLost.innerHTML = "";
       }
     }
 
@@ -97,7 +103,11 @@ document.onkeyup = function(event) {
       losses++;
       L.innerHTML = losses;
       loseSound.play();
+      ansWin;
+      ansLost = answer.toUpperCase();
       newGame();
+      lastWin.innerHTML = "";
+      lastLost.innerHTML = "Last Answer<br><br>" + ansLost;
     }
 
     reveal.innerHTML = revealed.join("  ");

@@ -3,10 +3,10 @@ html, body {
 }
 
 body {
-  background-image: url(../images/logo.jpg);
+  background-color:black;
+  background-image: url(../images/court.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
-  /*font-weight: bold;*/
 }
 
 .main {
